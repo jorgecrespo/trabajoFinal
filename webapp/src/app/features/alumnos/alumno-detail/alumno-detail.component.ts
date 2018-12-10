@@ -3,6 +3,7 @@ import { AlumnosServiceService } from '../alumnos-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Alumno } from '../clases/alumno';
 import { Nota } from '../clases/notas';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-alumno-detail',
@@ -11,14 +12,18 @@ import { Nota } from '../clases/notas';
 })
 export class AlumnoDetailComponent implements OnInit {
 
-  constructor(
-    public alumnosService: AlumnosServiceService,
-    private activatedRoute: ActivatedRoute,
-    private router: Router
-  ) { }
 
   alumno : Alumno;
   notas: Nota[]= [];
+  agregarCalificacion = false;
+
+  constructor(
+    public alumnosService: AlumnosServiceService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    public auth: AuthService
+  ) { }
+
 
   ngOnInit() {
 
@@ -48,8 +53,18 @@ export class AlumnoDetailComponent implements OnInit {
       this.notas = notas;
       console.log(notas)
     })
+  }
 
+  registrarCalificacion(){
+    if( this.auth.autenticado){
+      //modal para elegir materia y registrar nota.
+    } else {
+      alert('Tiene que iniciar sesion para registrar una calificacion')
+    }
+  }
 
+  GuardarCalificacion(){
+    alert('Aca se deberia guardar la calificacion y avisar si no se puso hacer')
   }
 
 

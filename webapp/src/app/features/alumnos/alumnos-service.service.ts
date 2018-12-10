@@ -83,29 +83,8 @@ export class AlumnosServiceService {
     });
 
   }
-/*
 
-  getNotaPorIdAlumno( alumno_id: string){
-
-    if ( this.notas.length > 0 ){
-
-      const notas = this.notas.find( nota => nota.alumno_id == alumno_id);
-      return Promise.resolve(notas); 
-    } 
-
-    return this.getNotas().then( notas: Notas[] => {
-
-      const notas: Nota[]] = this.alumnos.find( notas: any[] => {
-
-         return notas.alumno_id == alumno_id
-      });
-      return Promise.resolve( alumno )
-
-    })
-
-
-*/
-  }
+  
 
 
 

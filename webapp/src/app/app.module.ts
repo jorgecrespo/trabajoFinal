@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { HttpClientModule } from '@angular/common/http';
 import { AlumnosServiceService } from './features/alumnos/alumnos-service.service';
+import { AuthService } from './services/auth.service';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { AlumnosServiceService } from './features/alumnos/alumnos-service.servic
     HttpClientModule
   ],
   providers: [
-    AlumnosServiceService
+    AlumnosServiceService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

@@ -2,7 +2,7 @@
     <div class="col-md-6">
         <h1>
 
-            Alumno: <small> {{ alumno.nombre }}</small></h1>
+            <small>Alumno: </small>{{ alumno.nombre }}</h1>
 
 
         <hr>
@@ -18,18 +18,39 @@
                 <li class="list-group-item">Fecha de inscripcion: {{ alumno.insc_date }}</li>
                 <li class="list-group-item">Promedio de calificaciones: {{"X" }}</li>
             </ul>
-            <div class="card-body">
-                <a href="#" class="card-link">Registrar Calificacion</a>
+            <!-- <div class="card-body">
+                <button class="btn btn-outline-info" (click)="registrarCalificacion()">Registrar Calificacion</button>
 
-            </div>
+            </div> -->
         </div>
     </div>
 
     <div class="col-md-6">
-        <h3>Calificaciones</h3>
+        <h3>Calificaciones <small><button *ngIf="auth.autenticado && !agregarCalificacion" (click)="agregarCalificacion = !agregarCalificacion" class="btn btn-info" (click)="registrarCalificacion()"> Agregar </button>
+        </small></h3>
 
         <div class="card" style="width: 18rem;">
+
             <ul class="list-group list-group-flush">
+                <li class="list-group-item" *ngIf="agregarCalificacion && auth.autenticado">
+
+                    <form>
+                        Materia: <select>
+                                <option value="">Matematica</option>
+                                <option value="">Lengua</option>
+                                <option value="">Geografia</option>
+                        </select>
+                        <br> Nota: <input type="number">
+                        <br>
+                        <button (click)="GuardarCalificacion()">Agregar</button>
+                        <button (click)="agregarCalificacion = !agregarCalificacion">Cancelar</button>
+                    </form>
+
+                    <div>
+                        Spinner de carga de materias
+                    </div>
+
+                </li>
                 <li *ngFor="let nota of notas" class="list-group-item"> {{ nota.materia }} : {{ nota.calificacion }} ( {{ nota.exam_date}})</li>
             </ul>
         </div>

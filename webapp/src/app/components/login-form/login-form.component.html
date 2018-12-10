@@ -1,3 +1,8 @@
-<p>
-  login-form works!
-</p>
+<div class="btn-group btn-group-toggle" data-toggle="buttons">
+    <label class="btn btn-secondary" (click)="auth.autenticado = true" [ngClass]="{'active': auth.autenticado }">
+      <input type="radio" name="options" id="option1" autocomplete="off" checked> Logged In
+    </label>
+    <label class="btn btn-secondary " (click)="auth.autenticado = false" [ngClass]="{'active': !auth.autenticado }">
+      <input type="radio" name="options" id="option3" autocomplete="off"> Logged Out
+    </label>
+</div>
