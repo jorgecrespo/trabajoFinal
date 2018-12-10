@@ -2,8 +2,8 @@ from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
-from alumnos.models import Alumno, Materia
-from alumnos.serializers import AlumnoSerializer, MateriaSerializer
+from alumnos.models import Alumno, Materia, Nota
+from alumnos.serializers import AlumnoSerializer, MateriaSerializer, NotaSerializer
 
 
 @csrf_exempt
@@ -21,7 +21,7 @@ def materias_list(request):
 
 
 @csrf_exempt
-def notas_list(request):
-    notas = Materia.objects.all()
-    serializer = MateriaSerializer(notas, many = True)
+def notas_list(request, alumno):
+    notas = Nota.objects.filter(alumno= alumno)
+    serializer = NotaSerializer(notas, many = True)
     return JsonResponse(serializer.data, safe = False)

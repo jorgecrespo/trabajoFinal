@@ -1,10 +1,43 @@
-<h1>
+<div *ngIf="alumno" class="row">
+    <div class="col-md-6">
+        <h1>
 
-    Alumno: <small>Nombre Alumno</small></h1>
+            Alumno: <small> {{ alumno.nombre }}</small></h1>
 
 
-<hr>
+        <hr>
 
-<div class="row" style="background-color:brown">
-    Aca toda la info del alumno
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="../../../../assets/no-image-icon-md.png" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"> Nombre: {{ alumno.nombre }}</li>
+                <li class="list-group-item">Fecha de inscripcion: {{ alumno.insc_date }}</li>
+                <li class="list-group-item">Promedio de calificaciones: {{"X" }}</li>
+            </ul>
+            <div class="card-body">
+                <a href="#" class="card-link">Registrar Calificacion</a>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <h3>Calificaciones</h3>
+
+        <div class="card" style="width: 18rem;">
+            <ul class="list-group list-group-flush">
+                <li *ngFor="let nota of notas" class="list-group-item"> {{ nota.materia }} : {{ nota.calificacion }} ( {{ nota.exam_date}})</li>
+            </ul>
+        </div>
+
+    </div>
+
+</div>
+
+<div *ngIf="!alumno" style="background-color:brown">
+    spinner de carga
 </div>

@@ -16,6 +16,13 @@ class MateriaSerializer(serializers.ModelSerializer):
 
 
 class NotaSerializer(serializers.ModelSerializer):
+
+    materia = serializers.SerializerMethodField()
+
+
     class Meta:
         model = Nota
-        fields = ('id', 'exam_date', 'calificacion', 'alumno', 'materia')
+        fields = ('id', 'exam_date', 'calificacion', 'alumno_id', 'materia')
+
+    def get_materia(self,obj):
+        return obj.materia.nombre

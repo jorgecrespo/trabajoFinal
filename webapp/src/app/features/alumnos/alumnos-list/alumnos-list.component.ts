@@ -16,7 +16,7 @@ export class AlumnosListComponent implements OnInit {
   ngOnInit() {
     console.log("alumnos list funcionando")
     this.alumnosService.getAlumnos()   
-      .subscribe( alumnos =>{
+      .then( alumnos =>{
       console.log(alumnos);
       this.alumnos = alumnos;
     });
