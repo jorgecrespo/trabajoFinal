@@ -2,27 +2,27 @@ from rest_framework import serializers
 from alumnos.models import Alumno, Materia, Nota
 
 
-class AlumnoSerializer(serializers.ModelSerializer):
+class AlumnoSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Alumno
-        fields = ('id', 'nombre', 'insc_date', 'dni')
+        fields = ('id', 'url', 'nombre', 'insc_date', 'dni')
 
 
 
-class MateriaSerializer(serializers.ModelSerializer):
+class MateriaSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Materia
-        fields = ('id','nombre')
+        fields = ('id', 'url','nombre')
 
 
-class NotaSerializer(serializers.ModelSerializer):
+class NotaSerializer(serializers.HyperlinkedModelSerializer):
 
     materia = serializers.SerializerMethodField()
 
 
     class Meta:
         model = Nota
-        fields = ('id', 'exam_date', 'calificacion', 'alumno_id', 'materia')
+        fields = ('id', 'url', 'exam_date', 'calificacion', 'alumno_id', 'materia')
 
     def get_materia(self,obj):
         return obj.materia.nombre

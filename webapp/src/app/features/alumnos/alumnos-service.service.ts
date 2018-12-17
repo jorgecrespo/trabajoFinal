@@ -24,7 +24,7 @@ export class AlumnosServiceService {
 
     return new Promise ( resolve => {
 
-    this.http.get('http://localhost:8000/alumnos/')
+    this.http.get('http://localhost:8000/api/v1/alumnos/')
       .subscribe( (alumnos: Alumno[]) => {
 
         console.log(alumnos)
@@ -70,7 +70,7 @@ export class AlumnosServiceService {
 
     return new Promise ( resolve => {
 
-    this.http.get('http://localhost:8000/notas/'+ alumno_id + '/')
+    this.http.get('http://localhost:8000/apit/v1/notas/'+ alumno_id + '/')
       .subscribe( (notas: Nota[]) => {
 
         console.log(notas)
