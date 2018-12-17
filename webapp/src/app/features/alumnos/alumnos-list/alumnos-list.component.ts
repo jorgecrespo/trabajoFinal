@@ -13,13 +13,16 @@ export class AlumnosListComponent implements OnInit {
 
   constructor(private alumnosService: AlumnosServiceService) { }
 
-  ngOnInit() {
-    console.log("alumnos list funcionando")
-    this.alumnosService.getAlumnos()   
-      .then( alumnos =>{
-      console.log(alumnos);
-      this.alumnos = alumnos;
-    });
-  }
 
+  ngOnInit() {
+    
+    
+    this.alumnosService.getAlumnos()
+      .subscribe( (data:any) =>{
+        console.log("data: ", data)
+        this.alumnos = data;
+      })  
+      
+    
+  }
 }

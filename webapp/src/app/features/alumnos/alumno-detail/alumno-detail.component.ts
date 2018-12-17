@@ -49,7 +49,7 @@ export class AlumnoDetailComponent implements OnInit {
 
   cargarNotas(alumno_id){
 
-    this.alumnosService.getNotas( alumno_id ).then( notas =>{
+    this.alumnosService.getNotas( alumno_id ).then( notas: any =>{
       this.notas = notas;
       console.log(notas)
     })

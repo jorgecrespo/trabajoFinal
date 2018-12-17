@@ -15,4 +15,17 @@ export class LoginFormComponent implements OnInit {
   ngOnInit() {
   }
 
+  btnLoggedIn(){
+   
+    this.auth.autenticado = true;    
+  }
+
+
+  btnLoggedOut(){
+
+    this.auth.autenticado = false;
+  }
+
+
+  
 }

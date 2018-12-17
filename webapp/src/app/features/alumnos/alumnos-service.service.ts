@@ -16,25 +16,14 @@ export class AlumnosServiceService {
    }
 
 
-  getAlumnos(): Promise<Alumno[]> {
+
+
+
+   getAlumnos() {
     
-    if ( this.alumnos.length > 0 ){
-      return Promise.resolve( this.alumnos );
-    }
 
-    return new Promise ( resolve => {
-
-    this.http.get('http://localhost:8000/api/v1/alumnos/')
-      .subscribe( (alumnos: Alumno[]) => {
-
-        console.log(alumnos)
-
-        this.alumnos = alumnos;
-        resolve( alumnos );
-
-      });
-
-    });
+    return this.http.get('http://localhost:8000/api/v1/alumnos/')
+     
       
   }
 
@@ -70,15 +59,15 @@ export class AlumnosServiceService {
 
     return new Promise ( resolve => {
 
-    this.http.get('http://localhost:8000/apit/v1/notas/'+ alumno_id + '/')
-      .subscribe( (notas: Nota[]) => {
+      this.http.get('http://localhost:8000/api/v1/notas/'+ alumno_id + '/')
+        .subscribe( (notas: Nota[]) => {
 
-        console.log(notas)
+         // console.log(notas)
 
-        this.notas = notas;
-        resolve( notas );
+          this.notas = notas;
+          resolve( notas );
 
-      });
+        });
 
     });
 
