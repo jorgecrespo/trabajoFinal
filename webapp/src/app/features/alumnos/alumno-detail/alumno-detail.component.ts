@@ -31,20 +31,16 @@ export class AlumnoDetailComponent implements OnInit {
 
     this.cargarAlumno(id);
 
-    this.cargarNotas(id);
+    //this.cargarNotas(id);
 
    
   }
 
   cargarAlumno(id){
-    this.alumnosService.getAlumnoPorId( id ).then( alumno => {
-
-      if ( !alumno ) {
-        return this.router.navigateByUrl('/')
-      }
-      this.alumno = alumno
-      console.log( alumno )
-    })    
+    this.alumnosService.getAlumnoPorId( id ).subscribe( (alumno: Alumno)=>{
+      console.log("alumno detail ", alumno)
+      this.alumno = alumno;
+    })
   }
 
   cargarNotas(alumno_id){

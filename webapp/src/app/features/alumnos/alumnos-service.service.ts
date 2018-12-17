@@ -12,40 +12,24 @@ export class AlumnosServiceService {
   private notas: Nota[] = [];
 
   constructor( private http : HttpClient) {
-    console.log("servicio alumnos funcionando")
-   }
+   // console.log("servicio alumnos funcionando")
+  }
 
 
 
 
 
-   getAlumnos() {
-    
+  getAlumnos() {    
 
-    return this.http.get('http://localhost:8000/api/v1/alumnos/')
-     
+    return this.http.get<Alumno>('http://localhost:8000/api/v1/alumnos/')     
       
   }
 
+
+
   getAlumnoPorId( id: string){
-
-    if ( this.alumnos.length > 0 ){
-
-      const alumno = this.alumnos.find( alumno => alumno.id == id);
-      return Promise.resolve(alumno); 
-    } 
-
-    return this.getAlumnos().then( alumnos => {
-
-      const alumno = this.alumnos.find( alumno => {
-
-         return alumno.id == id
-      });
-      return Promise.resolve( alumno )
-
-    })
-
-
+    
+    return this.http.get<Alumno>('http://localhost:8000/api/v1/alumnos/'+ id + '/') 
 
   }
 
@@ -56,7 +40,7 @@ export class AlumnosServiceService {
   getNotas(alumno_id): Promise<Nota[]> {
     
 
-
+/*
     return new Promise ( resolve => {
 
       this.http.get('http://localhost:8000/api/v1/notas/'+ alumno_id + '/')
@@ -70,7 +54,7 @@ export class AlumnosServiceService {
         });
 
     });
-
+*/
   }
 
   
