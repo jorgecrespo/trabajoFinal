@@ -31,7 +31,7 @@ export class AlumnoDetailComponent implements OnInit {
 
     this.cargarAlumno(id);
 
-    //this.cargarNotas(id);
+    this.cargarNotas(id);
 
    
   }
@@ -45,7 +45,7 @@ export class AlumnoDetailComponent implements OnInit {
 
   cargarNotas(alumno_id){
 
-    this.alumnosService.getNotas( alumno_id ).then( notas: any =>{
+    this.alumnosService.getNotas( alumno_id ).subscribe( (notas: Nota[]) =>{
       this.notas = notas;
       console.log(notas)
     })

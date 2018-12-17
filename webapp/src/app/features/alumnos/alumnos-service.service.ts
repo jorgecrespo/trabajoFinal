@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Alumno } from './clases/alumno';
 import { Nota } from './clases/notas';
 
@@ -37,24 +37,15 @@ export class AlumnosServiceService {
   // NOTAS
   // ==========================
 
-  getNotas(alumno_id): Promise<Nota[]> {
+  getNotas(alumno_id ="1"){
     
+    let params = new HttpParams();
 
-/*
-    return new Promise ( resolve => {
+    params = params.append('alumno', alumno_id )
 
-      this.http.get('http://localhost:8000/api/v1/notas/'+ alumno_id + '/')
-        .subscribe( (notas: Nota[]) => {
 
-         // console.log(notas)
+    return this.http.get<Nota[]>('http://localhost:8000/api/v1/notas/', {params})
 
-          this.notas = notas;
-          resolve( notas );
-
-        });
-
-    });
-*/
   }
 
   
